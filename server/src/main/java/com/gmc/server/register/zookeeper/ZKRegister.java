@@ -19,12 +19,16 @@ import java.util.List;
 
 @Slf4j
 public class ZKRegister implements Register {
-    private static String address = Config.ZK_SERVER_ADDRESS.getValue();
+    private String address;
     private String zkPath;
 
     private Container container = SingletonFactory.getInstance(Container.class);
 
     private CuratorClient curatorClient = new CuratorClient();
+
+    public ZKRegister(String address){
+        this.address = address;
+    }
 
     @Override
     public void register() {

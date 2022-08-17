@@ -26,13 +26,14 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class NettyServer {
-    private static String address = Config.ZK_SERVER_ADDRESS.getValue();
+    private static String address;
 
     private ZKRegister register;
     private Container container;
 
-    public NettyServer(){
-        this.register = new ZKRegister();
+    public NettyServer(String address){
+        this.address = address;
+        this.register = new ZKRegister(address);
         container = SingletonFactory.getInstance(Container.class);
     }
 
