@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c555e1d-9d76-48f3-a693-d67f2eae4210" name="Changes" comment="git push -u origin master" />
+    <list default="true" id="8c555e1d-9d76-48f3-a693-d67f2eae4210" name="Changes" comment="git push -u origin master">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <list id="8aad296d-2c7b-4eb1-8708-056ba6246358" name="New changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +49,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="openjdk-18" />
@@ -117,7 +120,7 @@
       <workItem from="1660487492094" duration="16969000" />
       <workItem from="1660738719259" duration="513000" />
       <workItem from="1660739248539" duration="36000" />
-      <workItem from="1660739293536" duration="39000" />
+      <workItem from="1660739293536" duration="640000" />
     </task>
     <task id="LOCAL-00002" summary="git commit -m">
       <created>1660528258214</created>
@@ -210,7 +213,21 @@
       <option name="project" value="LOCAL" />
       <updated>1660738987571</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="git push -u origin master">
+      <created>1660739462751</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1660739462751</updated>
+    </task>
+    <task id="LOCAL-00016" summary="git push -u origin master">
+      <created>1660739807768</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1660739807769</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <option name="trackContextForNewChangelist" value="true" />
     <servers />
   </component>
