@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8c555e1d-9d76-48f3-a693-d67f2eae4210" name="Changes" comment="git push -u origin master" />
+    <list id="8aad296d-2c7b-4eb1-8708-056ba6246358" name="New changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="c17a133e-d788-4345-9b13-1a4df67d83a2" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="c17a133e-d788-4345-9b13-1a4df67d83a2" />
+        <option name="url" value="git@github.com:/HFsdb/GamingRPC.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectId" id="2DIN5LYYrWN3N1nvGUdkDHzByIZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ChangesTree.GroupingKeys" value="module&#10;directory" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jdk.selected.JAVA_MODULE" value="openjdk-18" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/src/main/java/com/gmc/server" />
+      <recent name="$PROJECT_DIR$/server/src/main/java/com/gmc/server/annotation" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.gmc.server" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.gmc.server.serializer.kryo" />
+      <recent name="com.gmc.server" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ClientApplication">
+    <configuration name="ClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="client" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gmc.client.ClientApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RpcSpringbootApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="rpc-springboot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gmc.RpcSpringbootApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gmc.server.ServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8c555e1d-9d76-48f3-a693-d67f2eae4210" name="Changes" comment="" />
+      <created>1660382457895</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660382457895</updated>
+      <workItem from="1660382460223" duration="165000" />
+      <workItem from="1660445773053" duration="270000" />
+      <workItem from="1660446058584" duration="11765000" />
+      <workItem from="1660458024030" duration="71000" />
+      <workItem from="1660458163305" duration="22475000" />
+      <workItem from="1660485570328" duration="233000" />
+      <workItem from="1660485848270" duration="1577000" />
+      <workItem from="1660487492094" duration="16969000" />
+      <workItem from="1660738719259" duration="513000" />
+      <workItem from="1660739248539" duration="36000" />
+      <workItem from="1660739293536" duration="39000" />
+    </task>
+    <task id="LOCAL-00002" summary="git commit -m">
+      <created>1660528258214</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1660528258215</updated>
+    </task>
+    <task id="LOCAL-00003" summary="git push -u origin master">
+      <created>1660528280809</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1660528280809</updated>
+    </task>
+    <task id="LOCAL-00004" summary="git push -u origin master">
+      <created>1660737362402</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1660737362402</updated>
+    </task>
+    <task id="LOCAL-00005" summary="git push -u origin master">
+      <created>1660737535489</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1660737535489</updated>
+    </task>
+    <task id="LOCAL-00006" summary="git push -u origin master">
+      <created>1660737803988</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1660737803989</updated>
+    </task>
+    <task id="LOCAL-00007" summary=" git stash  &#10;   git pull origin master  &#10;    git stash pop  &#10;git push -u origin master">
+      <created>1660737938297</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1660737938297</updated>
+    </task>
+    <task id="LOCAL-00008" summary=" git stash  &#10;   git pull origin master  &#10;    git stash pop  &#10;git push -u origin master">
+      <created>1660737960015</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1660737960015</updated>
+    </task>
+    <task id="LOCAL-00009" summary=" git stash  &#10;   git pull origin master  &#10;    git stash pop  &#10;git push -u origin master">
+      <created>1660738011404</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1660738011404</updated>
+    </task>
+    <task id="LOCAL-00010" summary=" git stash  &#10;   git pull origin master  &#10;    git stash pop  &#10;git push -u origin master">
+      <created>1660738137870</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1660738137870</updated>
+    </task>
+    <task id="LOCAL-00011" summary="git checkout -b test">
+      <created>1660738445869</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1660738445869</updated>
+    </task>
+    <task id="LOCAL-00012" summary="git checkout -b master origin/master">
+      <created>1660738506822</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1660738506822</updated>
+    </task>
+    <task id="LOCAL-00013" summary="git push -u origin master">
+      <created>1660738938872</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1660738938872</updated>
+    </task>
+    <task id="LOCAL-00014" summary="git push -u origin master">
+      <created>1660738987571</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1660738987571</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <option name="trackContextForNewChangelist" value="true" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="6214629d-bd89-4dcd-a204-4aaa54d345b3">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$/../git-repository" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="github/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="6214629d-bd89-4dcd-a204-4aaa54d345b3" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ff" />
+    <MESSAGE value="git commit -m" />
+    <MESSAGE value="git stash  &#10;git pull origin master  &#10;git stash pop  &#10;git push -u origin master" />
+    <MESSAGE value=" git stash  &#10;   git pull origin master  &#10;    git stash pop  &#10;git push -u origin master" />
+    <MESSAGE value="git checkout -b test" />
+    <MESSAGE value="git checkout -b test origin/master" />
+    <MESSAGE value="git checkout -b master origin/master" />
+    <MESSAGE value="git push -u origin master" />
+    <option name="LAST_COMMIT_MESSAGE" value="git push -u origin master" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/com/gmc/server/netty/NettyClient.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
