@@ -63,14 +63,12 @@ public class ZKDiscovery implements Discovery {
 
     public void update(HashSet<MetaData> metaDataSet) throws ExecutionException, InterruptedException {
         if(metaDataSet != null && ! metaDataSet.isEmpty()){
-
             //比较节点上的服务集合和此次服务集合
             for(final MetaData metaData : metaDataSet){
                 if(!container.getMetaDataSet().contains(metaData)){
                     connect(metaData);
                 }
             }
-
             //节点没有该服务就移除此次服务集合的服务
             for(MetaData metaData : container.getMetaDataSet()){
                 if(!metaDataSet.contains(metaData)){
