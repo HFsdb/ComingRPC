@@ -10,6 +10,7 @@ import com.gmc.server.info.ServiceInfo;
 import com.gmc.server.netty.NettyClient;
 import com.gmc.server.util.JsonUtil;
 import com.gmc.server.util.ThreadUtil;
+import com.google.common.hash.Hashing;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
@@ -47,26 +48,24 @@ public class ZKDiscovery implements Discovery {
             throw new RuntimeException("无服务");
         }
 
-        List<MetaData> metaDatalist = new ArrayList<>();//保存节点上的metadata列表
+        HashSet<MetaData> metaDataSet = new HashSet<>();//保存节点上的metadata列表
         for (String children : childrenList) {
             log.info("子节点: [{}].", children);
             byte[] bytes = curatorclient.getNodeData(Config.ZK_REGISTER_PARH.getValue() + "/" + children);
             String json = new String(bytes);
             MetaData metaData = JsonUtil.Json2Object(json, MetaData.class);
-            metaDatalist.add(metaData);
+            metaDataSet.add(metaData);
         }
-        log.info("得到服务数据：{}", metaDatalist);
-        update(metaDatalist);
+        log.info("得到服务数据：{}", metaDataSet);
+        update(metaDataSet);
         curatorclient.watchNode(Config.ZK_REGISTER_PARH.getValue());
     }
 
-    public void update(List<MetaData> metaDatalist) throws ExecutionException, InterruptedException {
-        if(metaDatalist != null && ! metaDatalist.isEmpty()){
-            HashSet<MetaData> nodeMetaDataSet = new HashSet<>(metaDatalist.size());
-            nodeMetaDataSet.addAll(metaDatalist);
+    public void update(HashSet<MetaData> metaDataSet) throws ExecutionException, InterruptedException {
+        if(metaDataSet != null && ! metaDataSet.isEmpty()){
 
             //比较节点上的服务集合和此次服务集合
-            for(final MetaData metaData : nodeMetaDataSet){
+            for(final MetaData metaData : metaDataSet){
                 if(!container.getMetaDataSet().contains(metaData)){
                     connect(metaData);
                 }
@@ -74,7 +73,7 @@ public class ZKDiscovery implements Discovery {
 
             //节点没有该服务就移除此次服务集合的服务
             for(MetaData metaData : container.getMetaDataSet()){
-                if(!nodeMetaDataSet.contains(metaData)){
+                if(!metaDataSet.contains(metaData)){
                     remove(metaData);
                 }
             }

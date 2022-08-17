@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c555e1d-9d76-48f3-a693-d67f2eae4210" name="Changes" comment="git push -u origin master">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/gmc/server/ServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/gmc/server/ServerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/gmc/server/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/gmc/server/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/gmc/server/netty/NettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/gmc/server/netty/NettyServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/gmc/server/register/zookeeper/ZKRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/gmc/server/register/zookeeper/ZKRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/gmc/server/discovery/zookeeper/ZKDiscovery.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/gmc/server/discovery/zookeeper/ZKDiscovery.java" afterDir="false" />
     </list>
     <list id="8aad296d-2c7b-4eb1-8708-056ba6246358" name="New changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +114,7 @@
       <workItem from="1660738719259" duration="513000" />
       <workItem from="1660739248539" duration="36000" />
       <workItem from="1660739293536" duration="640000" />
-      <workItem from="1660739950419" duration="1573000" />
+      <workItem from="1660739950419" duration="3435000" />
     </task>
     <task id="LOCAL-00002" summary="git commit -m">
       <created>1660528258214</created>
@@ -234,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660740605435</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="git push -u origin master">
+      <created>1660741679997</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1660741679997</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <option name="trackContextForNewChangelist" value="true" />
     <servers />
   </component>
