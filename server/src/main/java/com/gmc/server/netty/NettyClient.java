@@ -1,13 +1,12 @@
 package com.gmc.server.netty;
 
-import com.gmc.server.container.Container;
+import com.gmc.server.container.ClientContainer;
 import com.gmc.server.info.MetaData;
 import com.gmc.server.loadbalance.LoadBalance;
 import com.gmc.server.protocol.Decoder;
 import com.gmc.server.protocol.Encoder;
 import com.gmc.server.protocol.RpcRequest;
 import com.gmc.server.protocol.RpcResponse;
-import com.gmc.server.config.Config;
 import com.gmc.server.factory.SingletonFactory;
 import com.gmc.server.netty.future.PendingFuture;
 import com.gmc.server.netty.handler.NettyClientHandler;
@@ -42,11 +41,11 @@ public class NettyClient {
     private Serializer serializer = SingletonFactory.getInstance(ProtoStuffSerializer.class);
 
     private PendingFuture pendingFuture = SingletonFactory.getInstance(PendingFuture.class);
-    private Container container = SingletonFactory.getInstance(Container.class);
+    private ClientContainer clientContainer = SingletonFactory.getInstance(ClientContainer.class);
     public NettyClient(){}
 
     public Object sendRequest(RpcRequest request, LoadBalance loadBalance) {
-        Set<MetaData> metaDataSet = container.getMetaDataSet();
+        Set<MetaData> metaDataSet = clientContainer.getMetaDataSet();
         List<MetaData> list = new ArrayList<>();
         for(MetaData metaData : metaDataSet) list.add(metaData);
         MetaData metaData = loadBalance.distribute(list,request);

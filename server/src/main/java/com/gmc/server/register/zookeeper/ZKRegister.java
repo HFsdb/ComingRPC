@@ -1,7 +1,7 @@
 package com.gmc.server.register.zookeeper;
 
 import com.gmc.server.config.Config;
-import com.gmc.server.container.Container;
+import com.gmc.server.container.ServerContainer;
 import com.gmc.server.discovery.zookeeper.zkclient.CuratorClient;
 import com.gmc.server.factory.SingletonFactory;
 import com.gmc.server.info.MetaData;
@@ -10,10 +10,6 @@ import com.gmc.server.register.Register;
 import com.gmc.server.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.state.ConnectionState;
-import org.apache.curator.framework.state.ConnectionStateListener;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -22,7 +18,7 @@ public class ZKRegister implements Register {
     private String address;
     private String zkPath;
 
-    private Container container = SingletonFactory.getInstance(Container.class);
+    private ServerContainer container = SingletonFactory.getInstance(ServerContainer.class);
 
     private CuratorClient curatorClient = new CuratorClient();
 

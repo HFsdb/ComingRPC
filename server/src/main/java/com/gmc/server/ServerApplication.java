@@ -1,13 +1,10 @@
 package com.gmc.server;
 
-import com.gmc.server.container.Container;
-import com.gmc.server.factory.SingletonFactory;
 import com.gmc.server.netty.NettyServer;
 import com.gmc.server.service.HelloService;
 import com.gmc.server.service.imp.HelloServiceImp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class ServerApplication {

@@ -4,8 +4,7 @@ import com.gmc.server.protocol.Decoder;
 import com.gmc.server.protocol.Encoder;
 import com.gmc.server.protocol.RpcRequest;
 import com.gmc.server.protocol.RpcResponse;
-import com.gmc.server.config.Config;
-import com.gmc.server.container.Container;
+import com.gmc.server.container.ServerContainer;
 import com.gmc.server.factory.SingletonFactory;
 import com.gmc.server.netty.handler.NettyServerHandler;
 import com.gmc.server.register.zookeeper.ZKRegister;
@@ -29,12 +28,12 @@ public class NettyServer {
     private static String address;
 
     private ZKRegister register;
-    private Container container;
+    private ServerContainer serverContainer;
 
     public NettyServer(String address){
         this.address = address;
         this.register = new ZKRegister(address);
-        container = SingletonFactory.getInstance(Container.class);
+        serverContainer = SingletonFactory.getInstance(ServerContainer.class);
     }
 
     @SneakyThrows
@@ -89,7 +88,7 @@ public class NettyServer {
     public void addService2Container(String newAddress, String version, Object bean){
         log.info("添加服务到容器中");
         String serviceKey = newAddress + "#" + version;
-        container.putBeanMap(serviceKey,bean);
+        serverContainer.putBeanMap(serviceKey,bean);
 //        this.register.setContainer(container);
 //        this.nettyServerHandler.setContainer(container);
 

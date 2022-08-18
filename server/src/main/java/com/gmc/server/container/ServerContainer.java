@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 @Slf4j
-public class Container {
+public class ServerContainer {
     /**
      * map中的键是地址 + "#" + 版本号 -> 127.0.0.1:2181#1.0
      * map中的值是服务名 -> serviceImp
@@ -30,7 +30,7 @@ public class Container {
     public Map<String,Object> beanMap = new ConcurrentHashMap<>();
     public CopyOnWriteArraySet<MetaData> metaDataSet = new CopyOnWriteArraySet<>();
 
-    public Container(){}
+    public ServerContainer(){}
 
     public void putBeanMap(String key,Object o){beanMap.put(key,o);}
     public Map<String, Object> getBeanMap(){
