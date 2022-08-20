@@ -1,5 +1,5 @@
-# GamingRPC
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=435&lines=Gaming%E7%A5%9D%E6%82%A8%E7%94%9F%E6%B4%BB%E6%84%89%E5%BF%AB" alt="Typing SVG" /></a>
+# ComingRPC
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=435&lines=Coming%E7%A5%9D%E6%82%A8%E7%94%9F%E6%B4%BB%E6%84%89%E5%BF%AB" alt="Typing SVG" /></a>
 
 造了简单的rpc轮子，结合netty + zookeeper + Kryo (or protostuff or hessian)，主要参考了guide哥的rpc框架，实现这个rpc的目的在于学习netty和zookeeper的使用，丰富项目经验以及锻炼自己的代码能力
 
