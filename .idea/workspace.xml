@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8c555e1d-9d76-48f3-a693-d67f2eae4210" name="Changes" comment="git push -u origin master">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/gmc/client/ClientApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/gmc/client/ClientApplication.java" afterDir="false" />
     </list>
     <list id="8aad296d-2c7b-4eb1-8708-056ba6246358" name="New changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +119,8 @@
       <workItem from="1660794700023" duration="646000" />
       <workItem from="1660959080094" duration="175000" />
       <workItem from="1660959271808" duration="434000" />
-      <workItem from="1660960823635" duration="3715000" />
+      <workItem from="1660960823635" duration="4356000" />
+      <workItem from="1661858067199" duration="1001000" />
     </task>
     <task id="LOCAL-00002" summary="git commit -m">
       <created>1660528258214</created>
@@ -269,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660793121598</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="git push -u origin master">
+      <created>1661329035551</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1661329035551</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <option name="trackContextForNewChangelist" value="true" />
     <servers />
   </component>
