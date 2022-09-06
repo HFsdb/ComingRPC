@@ -95,7 +95,7 @@ public class NettyClient {
                             @Override
                             protected void initChannel(SocketChannel socketChannel) throws Exception {
                                 ChannelPipeline cp = socketChannel.pipeline();
-                                cp.addLast(new IdleStateHandler(0,0,30,TimeUnit.SECONDS));
+                                cp.addLast(new IdleStateHandler(5,5,30,TimeUnit.SECONDS));
                                 cp.addLast(new Encoder(RpcRequest.class,serializer));
                                 cp.addLast(new Decoder(RpcResponse.class,serializer));
                                 cp.addLast(new NettyClientHandler());
