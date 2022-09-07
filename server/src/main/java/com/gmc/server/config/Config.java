@@ -3,7 +3,7 @@ package com.gmc.server.config;
 import com.gmc.server.register.zookeeper.ZKRegister;
 
 public enum Config {
-    ZK_REGISTER_PARH("/Gaming_RPC2"),
+    ZK_REGISTER_PARH("/Gaming_RPC3"),
     ZK_NAME_SPACE("RPC2"),
     ZK_SESSION_TIMEOUT(5000),
     ZK_CONNECTION_TIMEOUT(5000),

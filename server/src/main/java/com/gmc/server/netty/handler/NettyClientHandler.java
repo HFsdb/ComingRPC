@@ -9,6 +9,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
 
@@ -56,10 +57,13 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        log.warn("客户端检测到通道空闲");
         if (evt instanceof IdleStateEvent) {
-            ctx.channel().close();
-            log.warn("通道空闲");
-            close();
+            IdleState idleState = ((IdleStateEvent) evt).state();
+            if(idleState == IdleState.ALL_IDLE){
+                log.info("关闭通道");
+                ctx.channel().close();
+            }
         } else {
             super.userEventTriggered(ctx, evt);
         }

@@ -7,6 +7,8 @@ import com.gmc.server.protocol.RpcResponse;
 import com.gmc.server.reflect.jdk.JdkReflect;
 import com.gmc.server.util.ThreadUtil;
 import io.netty.channel.*;
+import io.netty.handler.timeout.IdleState;
+import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationTargetException;
@@ -56,5 +58,25 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter{
 //        //CGLIB
 //        FastMethod fastMethod = CglibReflect.request2Bean(request,bean);
 //        return fastMethod.invoke(bean,request.getParams());
+    }
+
+    /**
+     * 空闲时间超时则主动关闭连接
+     * @param ctx
+     * @param evt
+     * @throws Exception
+     */
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        log.warn("服务器检测到通道空闲");
+        if (evt instanceof IdleStateEvent) {
+            IdleState idleState = ((IdleStateEvent) evt).state();
+            if(idleState == IdleState.ALL_IDLE){
+                log.info("关闭通道");
+                ctx.channel().close();
+            }
+        } else {
+            super.userEventTriggered(ctx, evt);
+        }
     }
 }

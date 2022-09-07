@@ -11,7 +11,7 @@ public class ServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ServerApplication.class, args);
-        String serverAddress = "127.0.0.1:18846";
+        String serverAddress = "127.0.0.1:18845";
         NettyServer nettyServer = new NettyServer(serverAddress);
         HelloService helloService1 = new HelloServiceImp();
 
