@@ -32,7 +32,7 @@ import java.util.concurrent.*;
 @Slf4j
 public class NettyClient {
 
-    private ThreadPoolExecutor pool = ThreadUtil.getThreadPool(4,8,600L);
+    private ThreadPoolExecutor pool = ThreadUtil.getThreadPool(30,60,600L);
     private EventLoopGroup eventLoopGroup = new NioEventLoopGroup(NettyRuntime.availableProcessors() / 2);
     private final Bootstrap bootstrap = new Bootstrap();
     private final Map<String,Channel> channelMap = new ConcurrentHashMap<>();
