@@ -1,15 +1,13 @@
 package com.gmc.server.netty;
 
-import com.gmc.server.protocol.Decoder;
-import com.gmc.server.protocol.Encoder;
-import com.gmc.server.protocol.RpcRequest;
-import com.gmc.server.protocol.RpcResponse;
+import com.gmc.server.protocol.MessageDecoderhandler;
 import com.gmc.server.container.ServerContainer;
 import com.gmc.server.factory.SingletonFactory;
+import com.gmc.server.protocol.MessageEncoderhandler;
 import com.gmc.server.netty.handler.NettyServerHandler;
 import com.gmc.server.register.zookeeper.ZKRegister;
 import com.gmc.server.serializer.Serializer;
-import com.gmc.server.serializer.protostuff.ProtoStuffSerializer;
+import com.gmc.server.serializer.kryo.KryoSerializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -40,7 +38,7 @@ public class NettyServer {
     public void start(){
         NioEventLoopGroup bossGroup = new NioEventLoopGroup();
         NioEventLoopGroup workGroup = new NioEventLoopGroup();
-        Serializer serializer = SingletonFactory.getInstance(ProtoStuffSerializer.class);
+        Serializer serializer = SingletonFactory.getInstance(KryoSerializer.class);
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup,workGroup)
@@ -53,8 +51,8 @@ public class NettyServer {
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             ChannelPipeline cp = socketChannel.pipeline();
                             cp.addLast(new IdleStateHandler(30,5,0, TimeUnit.SECONDS));
-                            cp.addLast(new Decoder(RpcRequest.class,serializer));
-                            cp.addLast(new Encoder(RpcResponse.class,serializer));
+                            cp.addLast(new MessageDecoderhandler(1024*1024,4,2,0,0,false,serializer));
+                            cp.addLast(new MessageEncoderhandler(serializer));
                             cp.addLast(new NettyServerHandler());
                         }
                     });

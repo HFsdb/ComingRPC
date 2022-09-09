@@ -3,15 +3,14 @@ package com.gmc.server.netty;
 import com.gmc.server.container.ClientContainer;
 import com.gmc.server.info.MetaData;
 import com.gmc.server.loadbalance.LoadBalance;
-import com.gmc.server.protocol.Decoder;
-import com.gmc.server.protocol.Encoder;
-import com.gmc.server.protocol.RpcRequest;
-import com.gmc.server.protocol.RpcResponse;
+import com.gmc.server.protocol.MessageDecoderhandler;
+import com.gmc.server.protocol.MessageEncoderhandler;
+import com.gmc.server.protocol.*;
 import com.gmc.server.factory.SingletonFactory;
 import com.gmc.server.netty.future.PendingFuture;
 import com.gmc.server.netty.handler.NettyClientHandler;
 import com.gmc.server.serializer.Serializer;
-import com.gmc.server.serializer.protostuff.ProtoStuffSerializer;
+import com.gmc.server.serializer.kryo.KryoSerializer;
 import com.gmc.server.util.ThreadUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
@@ -38,7 +37,7 @@ public class NettyClient {
     private final Map<String,Channel> channelMap = new ConcurrentHashMap<>();
     private Map<MetaData,NettyClientHandler> metaDataNettyClientHandlerMap = new ConcurrentHashMap<>();
     private final NettyClient nettyClient = this;
-    private Serializer serializer = SingletonFactory.getInstance(ProtoStuffSerializer.class);
+    private Serializer serializer = SingletonFactory.getInstance(KryoSerializer.class);
 
     private PendingFuture pendingFuture = SingletonFactory.getInstance(PendingFuture.class);
     private ClientContainer clientContainer = SingletonFactory.getInstance(ClientContainer.class);
@@ -65,10 +64,12 @@ public class NettyClient {
         }
         CompletableFuture<RpcResponse> future = new CompletableFuture<>();
         if(channel.isActive()) {
+            byte[] bytes = serializer.serialize(request);
+            Message message = new Message((byte) 0x01,bytes.length,request);
             pendingFuture.put(request.getRequestId(), future);
             log.info("通道正常");
 
-            channel.writeAndFlush(request).addListener((ChannelFutureListener) f -> {
+            channel.writeAndFlush(message).addListener((ChannelFutureListener) f -> {
                 if (f.isSuccess()) {
                     log.info("客户端发送消息成功");
                 } else {
@@ -96,8 +97,8 @@ public class NettyClient {
                             protected void initChannel(SocketChannel socketChannel) throws Exception {
                                 ChannelPipeline cp = socketChannel.pipeline();
                                 cp.addLast(new IdleStateHandler(5,5,30,TimeUnit.SECONDS));
-                                cp.addLast(new Encoder(RpcRequest.class,serializer));
-                                cp.addLast(new Decoder(RpcResponse.class,serializer));
+                                cp.addLast(new MessageEncoderhandler(serializer));
+                                cp.addLast(new MessageDecoderhandler(1024*1024,4,2,0,0,false,serializer));
                                 cp.addLast(new NettyClientHandler());
                             }
                         });

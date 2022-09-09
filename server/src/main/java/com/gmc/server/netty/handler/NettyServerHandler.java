@@ -2,9 +2,14 @@ package com.gmc.server.netty.handler;
 
 import com.gmc.server.container.ServerContainer;
 import com.gmc.server.factory.SingletonFactory;
+import com.gmc.server.protocol.Message;
 import com.gmc.server.protocol.RpcRequest;
 import com.gmc.server.protocol.RpcResponse;
 import com.gmc.server.reflect.jdk.JdkReflect;
+import com.gmc.server.serializer.Serializer;
+import com.gmc.server.serializer.kryo.KryoSerializer;
+import com.gmc.server.serializer.protostuff.ProtoStuffSerializer;
+import com.gmc.server.util.JsonUtil;
 import com.gmc.server.util.ThreadUtil;
 import io.netty.channel.*;
 import io.netty.handler.timeout.IdleState;
@@ -19,13 +24,15 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter{
 
     private ServerContainer serverContainer = SingletonFactory.getInstance(ServerContainer.class);
     private ThreadPoolExecutor pool = ThreadUtil.getThreadPool(35,70,600L);
+    private Serializer serializer = SingletonFactory.getInstance(KryoSerializer.class);
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
         pool.execute(new Runnable() {
             @Override
             public void run() {
-                RpcRequest request = (RpcRequest) msg;
+                Message message = (Message) msg;
+                RpcRequest request = (RpcRequest) message.getData();
                 log.info("接收请求ID:{}", request.getRequestId());
                 RpcResponse response = new RpcResponse();
                 response.setRequestId(request.getRequestId());
@@ -37,7 +44,9 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter{
                     response.setError((throwable.toString()));
                     throwable.printStackTrace();
                 }
-                ctx.writeAndFlush(response).addListener(new ChannelFutureListener() {
+                byte[] bytes = serializer.serialize(response);
+                Message message1 = new Message((byte) 0x02,bytes.length,response);
+                ctx.writeAndFlush(message1).addListener(new ChannelFutureListener() {
                     @Override
                     public void operationComplete(ChannelFuture channelFuture) throws Exception {
                         log.info("发送回复成功:{}",response.getRequestId());
