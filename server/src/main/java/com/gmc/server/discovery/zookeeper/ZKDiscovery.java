@@ -67,12 +67,8 @@ public class ZKDiscovery implements Discovery {
                 }
             }
         }else{
-            System.out.println("无可用的服务");
-//            for(MetaData metaData : metaDataSet){
-//                nettyClient.close();
-//            }
+            log.warn("无可用的服务");
         }
-
     }
 
     public void connect(MetaData metaData) throws ExecutionException, InterruptedException {

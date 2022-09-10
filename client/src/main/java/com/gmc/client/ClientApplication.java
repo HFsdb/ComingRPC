@@ -14,7 +14,13 @@ public class ClientApplication {
         SpringApplication.run(ClientApplication.class, args);
         new ServerInterface();
         HelloService helloService = ServerInterface.getProxy(HelloService.class,"1.0",new HashLoadBalance(),3000L);
-        System.out.println("name:" + helloService.hello("gmc"));
+        String str = "";
+        for(int i = 0; i < 2000; i++) {
+            str += 'a';
+        }
+        String message = helloService.hello(str);
+        System.out.println(message.length());
+        System.out.println("name:" + message);
 
     }
 

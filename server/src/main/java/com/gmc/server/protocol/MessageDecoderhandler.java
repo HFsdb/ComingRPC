@@ -35,20 +35,19 @@ public class MessageDecoderhandler extends LengthFieldBasedFrameDecoder {
         byte magic = buf.readByte();
         byte type = buf.readByte();
         int length = buf.readInt();
-        if(buf.readableBytes() != length){
-            log.error("标记的长度不符合当前长度");
-            throw new Exception("标记的长度不符合当前长度");
+        if(buf.readableBytes() < length){
+            log.error("标记的长度大于当前长度，等待");
+            return null;
         }
         byte[] bytes = new byte[length];
         buf.readBytes(bytes);
-        Object obj;
+        Object obj = null;
         Message message = null;
         try {
-            if(type == 0x01){
-                obj = serializer.deserialize(bytes, RpcRequest.class);
-            }
-            else{
-                obj = serializer.deserialize(bytes, RpcResponse.class);
+            switch (type){
+                case 0x01: obj = serializer.deserialize(bytes, RpcRequest.class);break;
+                case 0x02: obj = serializer.deserialize(bytes, RpcResponse.class);break;
+                default:obj = null;
             }
             message = new Message(type,length,obj);
         } catch (Exception ex) {
