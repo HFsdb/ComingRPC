@@ -52,6 +52,7 @@ public class MessageDecoderhandler extends LengthFieldBasedFrameDecoder {
             message = new Message(type,length,obj);
         } catch (Exception ex) {
             log.error("解码异常");
+
             throw new RuntimeException(ex);
         }
         return message;
