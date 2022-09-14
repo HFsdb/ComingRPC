@@ -1,14 +1,13 @@
 package com.gmc.server.proxy.jdk;
 
-import com.gmc.server.protocol.RpcRequest;
-import com.gmc.server.protocol.RpcResponse;
+import com.gmc.server.protocol.Request;
+import com.gmc.server.protocol.Response;
 import com.gmc.server.loadbalance.LoadBalance;
 import com.gmc.server.netty.NettyClient;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -28,17 +27,17 @@ public class ClientProxy implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         //封装RpcReques
         log.info("反射方法名[{}]", method.getName());
-        RpcRequest request = RpcRequest.builder().requestId(UUID.randomUUID().toString())
-                .className(method.getDeclaringClass().getName())
-                .methodName(method.getName())
-                .parameterTypes(method.getParameterTypes())
-                .version(version)
-                .params(args).build();
-        RpcResponse response = null;
+
+        Request request = new Request();
+        request.setClassName(method.getDeclaringClass().getName());
+        request.setMethodName(method.getName());
+        request.setParameterTypes(method.getParameterTypes());
+        request.setVersion(version);
+        request.setParams(args);
         //String key =  request.getRequestId() + "#" + request.getVersion();
-        CompletableFuture<RpcResponse> future = (CompletableFuture<RpcResponse>) new NettyClient().sendRequest(request,loadBalance);
+        CompletableFuture<Response> future = (CompletableFuture<Response>) new NettyClient().sendRequest(request,loadBalance);
         log.info("得到future，等待返回结果......");
-        response = future.get();
+        Response response = future.get();
         return response.getResult();
     }
 }

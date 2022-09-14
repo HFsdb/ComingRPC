@@ -2,10 +2,9 @@ package com.gmc.server.netty.handler;
 
 import com.gmc.server.factory.SingletonFactory;
 import com.gmc.server.protocol.Message;
-import com.gmc.server.protocol.RpcResponse;
+import com.gmc.server.protocol.Response;
 import com.gmc.server.netty.NettyClient;
 import com.gmc.server.netty.future.PendingFuture;
-import com.gmc.server.util.JsonUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFutureListener;
@@ -16,7 +15,6 @@ import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
 
 import java.net.SocketAddress;
-import java.util.concurrent.CompletableFuture;
 
 @Slf4j
 public class NettyClientHandler extends ChannelInboundHandlerAdapter {
@@ -36,8 +34,8 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception{
         Message message = (Message) msg;
 
-        RpcResponse response = (RpcResponse) message.getData();
-        log.info("接收服务端的回复体");
+        Response response = (Response) message.getData();
+        log.info("接收服务端的回复体"+response.getResult());
         pendingFuture.complete(response);
     }
 

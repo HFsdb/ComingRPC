@@ -1,7 +1,7 @@
 package com.gmc.server.loadbalance.pooling;
 
 import com.gmc.server.info.MetaData;
-import com.gmc.server.protocol.RpcRequest;
+import com.gmc.server.protocol.Request;
 import com.gmc.server.loadbalance.AbstractLoadBalance;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public class PoolingLoadBalance extends AbstractLoadBalance {
     private final Map<MetaData, Integer> map = new ConcurrentHashMap<>();
 
     @Override
-    protected MetaData executeLoadBalance(List<MetaData> serviceAddress, RpcRequest request) {
+    protected MetaData executeLoadBalance(List<MetaData> serviceAddress, Request request) {
         Integer integer = map.get(serviceAddress.get(0));
         if(integer == null){
             integer = 0;

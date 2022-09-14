@@ -3,13 +3,11 @@ package com.gmc.server.netty.handler;
 import com.gmc.server.container.ServerContainer;
 import com.gmc.server.factory.SingletonFactory;
 import com.gmc.server.protocol.Message;
-import com.gmc.server.protocol.RpcRequest;
-import com.gmc.server.protocol.RpcResponse;
+import com.gmc.server.protocol.Request;
+import com.gmc.server.protocol.Response;
 import com.gmc.server.reflect.jdk.JdkReflect;
 import com.gmc.server.serializer.Serializer;
 import com.gmc.server.serializer.kryo.KryoSerializer;
-import com.gmc.server.serializer.protostuff.ProtoStuffSerializer;
-import com.gmc.server.util.JsonUtil;
 import com.gmc.server.util.ThreadUtil;
 import io.netty.channel.*;
 import io.netty.handler.timeout.IdleState;
@@ -32,9 +30,9 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter{
             @Override
             public void run() {
                 Message message = (Message) msg;
-                RpcRequest request = (RpcRequest) message.getData();
+                Request request = (Request) message.getData();
                 log.info("接收请求ID:{}", request.getRequestId());
-                RpcResponse response = new RpcResponse();
+                Response response = new Response();
                 response.setRequestId(request.getRequestId());
                 try{
                     Object result = handle(request);
@@ -44,8 +42,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter{
                     response.setError((throwable.toString()));
                     throwable.printStackTrace();
                 }
-                byte[] bytes = serializer.serialize(response);
-                Message message1 = new Message((byte) 0x02,bytes.length,response);
+                Message message1 = new Message((byte) 0x02,response);
                 ctx.writeAndFlush(message1).addListener(new ChannelFutureListener() {
                     @Override
                     public void operationComplete(ChannelFuture channelFuture) throws Exception {
@@ -56,7 +53,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter{
         });
     }
 
-    public Object handle(RpcRequest request) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public Object handle(Request request) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         String className = request.getClassName();
         String version = request.getVersion();
         String key = className +"#" + version;

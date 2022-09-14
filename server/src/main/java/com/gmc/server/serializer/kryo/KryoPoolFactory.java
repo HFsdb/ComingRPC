@@ -3,8 +3,8 @@ package com.gmc.server.serializer.kryo;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.pool.KryoFactory;
 import com.esotericsoftware.kryo.pool.KryoPool;
-import com.gmc.server.protocol.RpcRequest;
-import com.gmc.server.protocol.RpcResponse;
+import com.gmc.server.protocol.Request;
+import com.gmc.server.protocol.Response;
 import org.objenesis.strategy.StdInstantiatorStrategy;
 
 class KryoPoolFactory {
@@ -13,8 +13,8 @@ class KryoPoolFactory {
     private KryoFactory factory = () -> {
         Kryo kryo = new Kryo();
         kryo.setReferences(false);
-        kryo.register(RpcRequest.class);
-        kryo.register(RpcResponse.class);
+        kryo.register(Request.class);
+        kryo.register(Response.class);
         Kryo.DefaultInstantiatorStrategy strategy = (Kryo.DefaultInstantiatorStrategy) kryo.getInstantiatorStrategy();
         strategy.setFallbackInstantiatorStrategy(new StdInstantiatorStrategy());
         return kryo;

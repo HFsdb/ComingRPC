@@ -50,8 +50,8 @@ public class NettyServer {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             ChannelPipeline cp = socketChannel.pipeline();
-                            cp.addLast(new IdleStateHandler(30,5,0, TimeUnit.SECONDS));
-                            cp.addLast(new MessageDecoderhandler(1024*1024,4,2,0,0,false,serializer));
+                            cp.addLast(new IdleStateHandler(5,5,30, TimeUnit.SECONDS));
+                            cp.addLast(new MessageDecoderhandler(1024*1024,16,4,0,0,false,serializer));
                             cp.addLast(new MessageEncoderhandler(serializer));
                             cp.addLast(new NettyServerHandler());
                         }

@@ -15,7 +15,7 @@ public class ClientApplication {
         new ServerInterface();
         HelloService helloService = ServerInterface.getProxy(HelloService.class,"1.0",new HashLoadBalance(),3000L);
         String str = "";
-        for(int i = 0; i < 2000; i++) {
+        for(int i = 0; i < 20000; i++) {
             str += 'a';
         }
         String message = helloService.hello(str);

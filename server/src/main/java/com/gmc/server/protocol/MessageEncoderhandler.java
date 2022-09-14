@@ -1,13 +1,9 @@
 package com.gmc.server.protocol;
 
-import com.gmc.server.protocol.Message;
-import com.gmc.server.protocol.RpcRequest;
 import com.gmc.server.serializer.Serializer;
-import com.gmc.server.util.JsonUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
-import jdk.security.jarsigner.JarSigner;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -15,19 +11,75 @@ public class MessageEncoderhandler extends MessageToByteEncoder {
 
     private Serializer serializer;
 
+    protected final short magic = (short) 0xC713;
+
+    protected final static int header_length = 24;
+
+    protected static final byte serializeKryo = 0x01;
+    protected static final byte serializeHessian = 0x02;
+    protected static final byte serializeProtobuff = 0x04;
+
     public MessageEncoderhandler(Serializer serializer) {
         this.serializer = serializer;
     }
 
+    public static void short2bytes(short s,byte[] b,int off){
+        b[off + 1] = (byte) s;
+        b[off + 0] = (byte) (s >>> 8);
+    }
+
+    public static void int2bytes(int v, byte[] b, int off) {
+        b[off + 3] = (byte) v;
+        b[off + 2] = (byte) (v >>> 8);
+        b[off + 1] = (byte) (v >>> 16);
+        b[off + 0] = (byte) (v >>> 24);
+    }
+
+    public static void long2bytes(long v, byte[] b, int off) {
+        b[off + 7] = (byte) v;
+        b[off + 6] = (byte) (v >>> 8);
+        b[off + 5] = (byte) (v >>> 16);
+        b[off + 4] = (byte) (v >>> 24);
+        b[off + 3] = (byte) (v >>> 32);
+        b[off + 2] = (byte) (v >>> 40);
+        b[off + 1] = (byte) (v >>> 48);
+        b[off + 0] = (byte) (v >>> 56);
+    }
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Object in, ByteBuf out){
         log.info("准备编码");
         try{
             Message message = (Message) in;
-            out.writeByte(message.getMagic());
-            out.writeByte(message.getType());
-            out.writeInt(message.getLength());
+//            byte[] header = new byte[header_length];
+            out.writeShort(magic);
+
+            //short2bytes(magic,header,0);
+
+            byte type = message.getType();
+            out.writeByte(type);
+            out.writeByte(serializeKryo);
+//            header[2] = type;
+//            header[3] = serializeKryo;
+//            int2bytes(0,header,4);
+            if(type == (byte) 0x01) {
+                Request request = (Request) message.getData();
+                out.writeInt(0);
+                out.writeLong(request.getRequestId());
+//                int2bytes(0, header, 8);
+//                long2bytes(request.getRequestId(), header, 12);
+            }else{
+                Response response = (Response) message.getData();
+                out.writeInt(0);
+                out.writeLong(response.getRequestId());
+                System.out.println(response.getRequestId());
+//                int2bytes(0,header,8);
+//                long2bytes(response.getRequestId(),header,12);
+            }
             byte[] data = serializer.serialize(message.getData());
+            out.writeInt(data.length);
+//            int2bytes(data.length,header,20);
+//            System.out.println(data.length);
+//            out.writeBytes(header);
             out.writeBytes(data);
         }catch (Exception e){
             log.info("编码异常");

@@ -43,7 +43,7 @@ public class NettyClient {
     private ClientContainer clientContainer = SingletonFactory.getInstance(ClientContainer.class);
     public NettyClient(){}
 
-    public Object sendRequest(RpcRequest request, LoadBalance loadBalance) {
+    public Object sendRequest(Request request, LoadBalance loadBalance) {
         Set<MetaData> metaDataSet = clientContainer.getMetaDataSet();
         List<MetaData> list = new ArrayList<>();
         for(MetaData metaData : metaDataSet) list.add(metaData);
@@ -62,11 +62,10 @@ public class NettyClient {
                 e.printStackTrace();
             }
         }
-        CompletableFuture<RpcResponse> future = new CompletableFuture<>();
+        CompletableFuture<Response> future = new CompletableFuture<>();
         if(channel.isActive()) {
-            byte[] bytes = serializer.serialize(request);
-            Message message = new Message((byte) 0x01,bytes.length,request);
-            pendingFuture.put(request.getRequestId(), future);
+            Message message = new Message((byte) 0x01,request);
+            pendingFuture.put(String.valueOf(request.getRequestId()), future);
             log.info("通道正常");
 
             channel.writeAndFlush(message).addListener((ChannelFutureListener) f -> {
@@ -98,7 +97,7 @@ public class NettyClient {
                                 ChannelPipeline cp = socketChannel.pipeline();
                                 cp.addLast(new IdleStateHandler(5,5,30,TimeUnit.SECONDS));
                                 cp.addLast(new MessageEncoderhandler(serializer));
-                                cp.addLast(new MessageDecoderhandler(1024*1024,4,2,0,0,false,serializer));
+                                cp.addLast(new MessageDecoderhandler(1024*1024,16,4,0,0,false,serializer));
                                 cp.addLast(new NettyClientHandler());
                             }
                         });

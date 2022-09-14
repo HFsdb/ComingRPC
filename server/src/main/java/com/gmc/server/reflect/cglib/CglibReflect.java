@@ -1,6 +1,6 @@
 package com.gmc.server.reflect.cglib;
 
-import com.gmc.server.protocol.RpcRequest;
+import com.gmc.server.protocol.Request;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.reflect.FastClass;
 import org.springframework.cglib.reflect.FastMethod;
@@ -8,7 +8,7 @@ import org.springframework.cglib.reflect.FastMethod;
 @Slf4j
 public class CglibReflect {
 
-    public static FastMethod request2Bean(RpcRequest request, Object bean){
+    public static FastMethod request2Bean(Request request, Object bean){
         Class<?> serviceClass = bean.getClass();
         log.info("服务类:{}",serviceClass);
         String methodName = request.getMethodName();
