@@ -49,10 +49,8 @@ public class MessageDecoderhandler extends LengthFieldBasedFrameDecoder {
         Message message = null;
         try {
             switch (type){
-                case 0x01: obj = serializer.deserialize(bytes, Request.class);
-                    System.out.println(type+"req");break;
-                case 0x02: obj = serializer.deserialize(bytes, Response.class);
-                    System.out.println(type+"resp");break;
+                case 0x01: obj = serializer.deserialize(bytes, Request.class);break;
+                case 0x02: obj = serializer.deserialize(bytes, Response.class);break;
                 default:obj = null;
             }
             System.out.println(obj);

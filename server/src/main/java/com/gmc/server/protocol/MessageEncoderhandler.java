@@ -71,7 +71,6 @@ public class MessageEncoderhandler extends MessageToByteEncoder {
                 Response response = (Response) message.getData();
                 out.writeInt(0);
                 out.writeLong(response.getRequestId());
-                System.out.println(response.getRequestId());
 //                int2bytes(0,header,8);
 //                long2bytes(response.getRequestId(),header,12);
             }
