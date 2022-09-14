@@ -28,37 +28,39 @@ public class MessageDecoderhandler extends LengthFieldBasedFrameDecoder {
             log.error("字节数不够");
             throw new Exception("字节数不够");
         }
-        short magic = buf.readShort();
-        if(magic != (short)0xC713){
-            log.error("magic错误");
-            throw new Exception();
-        }
-        byte type = buf.readByte();
-        byte serialize = buf.readByte();
-        int splitnum = buf.readInt();
-
-        long requestId = buf.readLong();
-        int length = buf.readInt();
-        if(buf.readableBytes() < length){
-            log.error("标记的长度大于当前长度，等待");
-            return null;
-        }
-        byte[] bytes = new byte[length];
-        buf.readBytes(bytes);
-        Object obj = null;
-        Message message = null;
-        try {
-            switch (type){
-                case 0x01: obj = serializer.deserialize(bytes, Request.class);break;
-                case 0x02: obj = serializer.deserialize(bytes, Response.class);break;
-                default:obj = null;
+        try{
+            short magic = buf.readShort();
+            if(magic != (short)0xC713){
+                log.error("magic错误");
+                throw new Exception();
             }
-            System.out.println(obj);
+            byte type = buf.readByte();
+            byte serialize = buf.readByte();
+            int splitnum = buf.readInt();
+            long requestId = buf.readLong();
+            int length = buf.readInt();
+            if(buf.readableBytes() < length){
+                log.error("标记的长度大于当前长度，等待");
+                return null;
+            }
+            byte[] bytes = new byte[length];
+            buf.readBytes(bytes);
+            Object obj = null;
+            Message message = null;
+            if(type == 0x01){
+                obj = serializer.deserialize(bytes, Request.class);
+            } else if(type == 0x02){
+                obj = serializer.deserialize(bytes, Response.class);
+            }else {
+                log.error("不是消息类型");
+                throw new Exception();
+            }
             message = new Message(type,obj);
+            return message;
         } catch (Exception ex) {
             log.error("解码异常");
             throw new RuntimeException(ex);
         }
-        return message;
+
     }
 }
