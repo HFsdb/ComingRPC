@@ -65,7 +65,6 @@ public class MessageEncoderhandler extends MessageToByteEncoder {
             }
             byte[] data = serializer.serialize(message.getData());
             int2bytes(data.length,header,16);
-            System.out.println(data.length);
             out.writeBytes(header);
             out.writeBytes(data);
         }catch (Exception e){
