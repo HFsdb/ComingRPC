@@ -36,6 +36,7 @@ public class MessageDecoderhandler extends LengthFieldBasedFrameDecoder {
             }
             byte type = buf.readByte();
             byte serialize = buf.readByte();
+
             int splitnum = buf.readInt();
             long requestId = buf.readLong();
             int length = buf.readInt();

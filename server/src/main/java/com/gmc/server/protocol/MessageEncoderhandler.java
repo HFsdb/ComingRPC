@@ -13,7 +13,7 @@ public class MessageEncoderhandler extends MessageToByteEncoder {
 
     protected final short magic = (short) 0xC713;
 
-    protected final static int header_length = 24;
+    protected final static int header_length = 20;
 
     protected static final byte serializeKryo = 0x01;
     protected static final byte serializeHessian = 0x02;
@@ -50,35 +50,23 @@ public class MessageEncoderhandler extends MessageToByteEncoder {
         log.info("准备编码");
         try{
             Message message = (Message) in;
-//            byte[] header = new byte[header_length];
-            out.writeShort(magic);
-
-            //short2bytes(magic,header,0);
-
+            byte[] header = new byte[header_length];
+            short2bytes(magic,header,0);
             byte type = message.getType();
-            out.writeByte(type);
-            out.writeByte(serializeKryo);
-//            header[2] = type;
-//            header[3] = serializeKryo;
-//            int2bytes(0,header,4);
+            header[2] = type;
+            header[3] = serializeKryo;
+            int2bytes(0,header,4);
             if(type == (byte) 0x01) {
                 Request request = (Request) message.getData();
-                out.writeInt(0);
-                out.writeLong(request.getRequestId());
-//                int2bytes(0, header, 8);
-//                long2bytes(request.getRequestId(), header, 12);
+                long2bytes(request.getRequestId(), header, 8);
             }else{
                 Response response = (Response) message.getData();
-                out.writeInt(0);
-                out.writeLong(response.getRequestId());
-//                int2bytes(0,header,8);
-//                long2bytes(response.getRequestId(),header,12);
+                long2bytes(response.getRequestId(),header,8);
             }
             byte[] data = serializer.serialize(message.getData());
-            out.writeInt(data.length);
-//            int2bytes(data.length,header,20);
-//            System.out.println(data.length);
-//            out.writeBytes(header);
+            int2bytes(data.length,header,16);
+            System.out.println(data.length);
+            out.writeBytes(header);
             out.writeBytes(data);
         }catch (Exception e){
             log.info("编码异常");
