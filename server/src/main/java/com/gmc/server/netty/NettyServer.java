@@ -67,6 +67,7 @@ public class NettyServer {
                         log.info("成功连接远程服务器,服务器 = {}",host+":"+port);
 
                     }else{
+
                         log.error("绑定端口失败");
                     }
                 }
