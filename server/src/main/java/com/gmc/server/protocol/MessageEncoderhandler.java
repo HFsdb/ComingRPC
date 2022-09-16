@@ -10,11 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 public class MessageEncoderhandler extends MessageToByteEncoder {
 
     private Serializer serializer;
-
     protected final short magic = (short) 0xC713;
-
     protected final static int header_length = 20;
-
     protected static final byte serializeKryo = 0x01;
     protected static final byte serializeHessian = 0x02;
     protected static final byte serializeProtobuff = 0x04;
