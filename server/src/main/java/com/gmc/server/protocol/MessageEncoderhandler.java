@@ -42,6 +42,7 @@ public class MessageEncoderhandler extends MessageToByteEncoder {
         b[off + 1] = (byte) (v >>> 48);
         b[off + 0] = (byte) (v >>> 56);
     }
+
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Object in, ByteBuf out){
         log.info("准备编码");
