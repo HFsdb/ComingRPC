@@ -84,14 +84,10 @@ public class NettyClient {
     }
     public Channel connect(InetSocketAddress inetSocketAddress) throws ExecutionException, InterruptedException {
         CompletableFuture<Channel> completableFuture = new CompletableFuture<>();
-        pool.submit(new Runnable() {
-            @Override
-            public void run() {
-                //NettyClientHandler handler = new NettyClientHandler();
+        pool.submit(()-> {
                 bootstrap.group(eventLoopGroup)
                         .channel(NioSocketChannel.class)
                         .handler(new ChannelInitializer<SocketChannel>() {
-
                             @Override
                             protected void initChannel(SocketChannel socketChannel) throws Exception {
                                 ChannelPipeline cp = socketChannel.pipeline();
@@ -101,7 +97,6 @@ public class NettyClient {
                                 cp.addLast(new NettyClientHandler());
                             }
                         });
-
                 bootstrap.connect(inetSocketAddress).addListener((ChannelFutureListener) future -> {
                     if(future.isSuccess()){
                         log.info("客户端连接成功");
@@ -110,8 +105,6 @@ public class NettyClient {
                         throw new IllegalStateException();
                     }
                 });
-
-            }
         });
         return completableFuture.get();
     }
