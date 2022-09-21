@@ -97,7 +97,6 @@ public class NettyClient {
                                 cp.addLast(new NettyClientHandler());
                             }
                         });
-
                 bootstrap.connect(inetSocketAddress).addListener((ChannelFutureListener) future -> {
                     if(future.isSuccess()){
                         log.info("客户端连接成功");
