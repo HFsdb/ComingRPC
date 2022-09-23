@@ -109,7 +109,6 @@ public class NettyClient {
         return completableFuture.get();
     }
 
-
     public void close(){
 
     }
