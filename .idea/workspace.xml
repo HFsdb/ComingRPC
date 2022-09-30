@@ -130,14 +130,7 @@
       <workItem from="1662724983915" duration="2000" />
       <workItem from="1662806084251" duration="237000" />
       <workItem from="1662887149517" duration="14630000" />
-      <workItem from="1663072014348" duration="17460000" />
-    </task>
-    <task id="LOCAL-00002" summary="git commit -m">
-      <created>1660528258214</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1660528258215</updated>
+      <workItem from="1663072014348" duration="18065000" />
     </task>
     <task id="LOCAL-00003" summary="git push -u origin master">
       <created>1660528280809</created>
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664373231680</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="git push -u origin master">
+      <created>1664434195797</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1664434195799</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <option name="trackContextForNewChangelist" value="true" />
     <servers />
   </component>
