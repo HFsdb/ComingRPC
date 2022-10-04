@@ -106,7 +106,6 @@ public class NettyClient {
                     }
                 });
         });
-
         return completableFuture.get();
     }
 
