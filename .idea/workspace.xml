@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c555e1d-9d76-48f3-a693-d67f2eae4210" name="Changes" comment="git push -u origin master">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="8c555e1d-9d76-48f3-a693-d67f2eae4210" name="Changes" comment="git push -u origin master" />
     <list id="8aad296d-2c7b-4eb1-8708-056ba6246358" name="New changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,14 +130,7 @@
       <workItem from="1662724983915" duration="2000" />
       <workItem from="1662806084251" duration="237000" />
       <workItem from="1662887149517" duration="14630000" />
-      <workItem from="1663072014348" duration="19266000" />
-    </task>
-    <task id="LOCAL-00004" summary="git push -u origin master">
-      <created>1660737362402</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1660737362402</updated>
+      <workItem from="1663072014348" duration="19288000" />
     </task>
     <task id="LOCAL-00005" summary="git push -u origin master">
       <created>1660737535489</created>
@@ -477,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664503809642</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="git push -u origin master">
+      <created>1664887803703</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1664887803703</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <option name="trackContextForNewChangelist" value="true" />
     <servers />
   </component>
